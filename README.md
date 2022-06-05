@@ -14,4 +14,4 @@ Projeto em desenvolvimento ainda. Falta implementação de tela de login, tratam
 
 [localhost:3000/aluno](http://localhost:3000/student) → para acessar a página do aluno
 
-[localhost:3000/](http://localhost:3000/teacher)professor → para acessar a página do professor
+[localhost:3000/teacher](http://localhost:3000/teacher) → para acessar a página do professor
