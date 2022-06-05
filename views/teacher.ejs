@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Mural</title>
+</head>
+
+<body>
+    <div class="h1 d-flex justify-content-center align-items-center" style="height: 70px; background-color: #D2DAC8;">
+        <!-- <img class="flex-start" id="my-logo" src="../assets/logo_cabecalho.png" class="m-3"> -->
+        Portal do Professor
+    </div>
+
+    <form id="my-form" action="/new" method="POST" class="d-flex flex-column align-items-center">
+        <h4>Título</h4>
+        <input class="mb-3" id="title" name="title" required>
+        <h4>Descrição</h4>
+        <textarea class="mb-3" id="description" name="description"></textarea>
+        <button id="my-save">Enviar</button>
+        <div id="my-line"></div>
+    </form>
+
+
+
+    <div class="container">
+
+        <div class="d-flex flex-column align-items-center">
+
+            <h2 class=" mb-4 fw-bold">Mural</h2>
+
+        </div>
+
+        <div id="posts">
+            <% for (let i=0; i < docs.length; i++) {%>
+                <div id="<%=docs[i].id%>" class="card mb-4 my-post">
+                    <div class="card-header">
+                        <h5 class="card-title d-flex justify-content-between align-items-center">
+                            <%=docs[i].title%>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <form action="/edit/<%=docs[i].id%>" method="GET">
+                                        <button
+                                            class="btn btn-success d-flex justify-content-center align-items-center m-1"
+                                            style="height: 25px; width: 25px">
+                                                <span class="material-icons md-18">edit</span>
+                                        </button>
+                                    </form>
+
+                                    <form method="POST" action="/delete/<%=docs[i].id%>?_method=DELETE">
+                                        <button
+                                            class="btn btn-danger d-flex justify-content-center align-items-center m-1"
+                                            style="height: 25px; width: 25px">
+                                                <span class="material-icons md-18">close</span>
+                                        </button>
+                                    </form>
+                                </div>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <%=docs[i].description%>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+    </div>
+
+    <div style="width: 70px; height: 70px"></div>
+
+    <footer>
+        <h6>Desenvolvidor por <a href="https://www.linkedin.com/in/guilherme-mendes-rosa-4898501b8/"
+                target="_blank">Guilherme Mendes Rosa</a></h3>
+    </footer>
+    </div>
+
+</body>
+
+<%- include("partials/style")%>
+
+</html>
